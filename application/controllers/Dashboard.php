@@ -26,7 +26,97 @@ class Dashboard extends CI_Controller
 		$factoryid = $this->session->userdata('factoryid');
 		$this->load->view('admin/toprightnav', $data);
 		$this->load->view('admin/leftmenu');
-		$this->load->view('admin/dashboard', $data);
+		if($usertype=='1')
+		{
+			$query =  $this->db->query("SELECT SUM(taka) AS taka,billingunit
+			FROM movement_insert1
+			LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
+			WHERE MONTH(fdate)=MONTH(NOW()) AND YEAR(fdate)=YEAR(NOW())
+			GROUP BY billingunit"); 
+	  		$record = $query->result();
+	  		$data = array();
+	  		foreach($record as $row) {
+	  
+				  $data['label'][] = $row->billingunit;
+	  
+				  $data['data'][] = (int) $row->taka;
+	  
+			}
+	  
+			$data['chart_data'] = json_encode($data);
+			
+			$query1=$this->db->query("SELECT 
+
+			SUM(taka) AS taka,departmentname
+			FROM movement_insert1
+			LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
+			JOIN user ON user.userid= movement_insert1.userid
+			JOIN department ON department.deptid=user.departmentid
+			WHERE MONTH(fdate)=MONTH(NOW()) AND YEAR(fdate)=YEAR(NOW()) AND mstatus!='0'
+			GROUP BY department.deptid
+			ORDER BY departmentname ASC");
+		$record1 = $query1->result();
+				$data1 = array();
+				foreach($record1 as $row) 
+					{
+						$data1['label'][] = $row->departmentname;
+						$data1['data'][] = (int) $row->taka;
+					}
+				$data['chart_data1'] = json_encode($data1);
+
+
+
+
+			$this->load->view('admin/dashboard_admin', $data);
+
+		}
+		elseif($usertype=='4')
+		{
+			$query =  $this->db->query("SELECT SUM(taka) AS taka,billingunit
+			FROM movement_insert1
+			LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
+			JOIN user ON user.userid= movement_insert1.userid
+			WHERE MONTH(fdate)=MONTH(NOW()) AND YEAR(fdate)=YEAR(NOW()) AND user.depthheadid='$userid' AND mstatus!='0'
+			GROUP BY billingunit"); 
+	  		$record = $query->result();
+	  		$data = array();
+	  		foreach($record as $row) {
+	  
+				  $data['label'][] = $row->billingunit;
+	  
+				  $data['data'][] = (int) $row->taka;
+	  
+			}
+	  
+			$data['chart_data'] = json_encode($data);
+			$this->load->view('admin/dashboard_depthhead', $data);
+		}
+		elseif($usertype=='3')
+		{
+			$query =  $this->db->query("SELECT SUM(taka) AS taka,billingunit
+			FROM movement_insert1
+			LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
+			JOIN user ON user.userid= movement_insert1.userid
+			WHERE MONTH(fdate)=MONTH(NOW()) AND YEAR(fdate)=YEAR(NOW()) AND user.lmauserid='$userid' AND mstatus!='0'
+			GROUP BY billingunit"); 
+	  		$record = $query->result();
+	  		$data = array();
+	  		foreach($record as $row) {
+	  
+				  $data['label'][] = $row->billingunit;
+	  
+				  $data['data'][] = (int) $row->taka;
+	  
+			}
+	  
+			$data['chart_data'] = json_encode($data);
+			$this->load->view('admin/dashboard_linemanager', $data);
+		}
+		else
+		{
+			$this->load->view('admin/dashboard', $data);
+		}
+		
 	}
 	public function factory_insert_form()
 	{
@@ -41,11 +131,17 @@ class Dashboard extends CI_Controller
 		{
 			$this->load->view('admin/factory_insert_form', $data);
 		}
+
+
+
+
 		else
 		{
 			$this->load->view('admin/dashboard', $data);
 		}
+		
 	}
+	
 	public function fac_insert()
 	{
 		$this->load->database();
@@ -423,6 +519,49 @@ class Dashboard extends CI_Controller
 			redirect('Dashboard/userstatus_list', 'refresh');
 		}
 	}
+	public function transittype_insert_form()
+	{
+		$this->load->database();
+		$this->load->model('Admin');
+		$data['title'] = 'Transit Type Insert';
+		$this->load->view('admin/head', $data);
+		$this->load->view('admin/toprightnav');
+		$this->load->view('admin/leftmenu');
+		$this->load->view('admin/transittype_insert_form', $data);
+	}
+	public function transittype_insert()
+	{
+		$this->load->database();
+		$this->load->library('form_validation');
+		$this->load->model('Admin');
+		if ($this->input->post('submit')) {
+			$transittype = $this->form_validation->set_rules('transittype', 'Transit Type', 'required');
+			if ($this->form_validation->run() == FALSE) {
+				$this->transittype_insert_form();
+			} else {
+				$transittype = $this->input->post('transittype');
+				$ins = $this->Admin->transittype_insert($transittype);
+
+				if ($ins == TRUE) {
+					$this->session->set_flashdata('Successfully', 'Successfully Inserted');
+				} else {
+					$this->session->set_flashdata('Successfully', 'Failed To Inserted');
+				}
+				redirect('Dashboard/transittype_insert_form', 'refresh');
+			}
+		}
+	}
+	public function transittype_list()
+	{
+		$this->load->database();
+		$this->load->model('Admin');
+		$data['title'] = 'Transit Type List';
+		$this->load->view('admin/head', $data);
+		$this->load->view('admin/toprightnav');
+		$this->load->view('admin/leftmenu');
+		$data['ul'] = $this->Admin->transittype_list();
+		$this->load->view('admin/transittype_list', $data);
+	}
 	public function transitmode_insert_form()
 	{
 		$this->load->database();
@@ -431,6 +570,7 @@ class Dashboard extends CI_Controller
 		$this->load->view('admin/head', $data);
 		$this->load->view('admin/toprightnav');
 		$this->load->view('admin/leftmenu');
+		$data['ul'] = $this->Admin->transittype_list();
 		$this->load->view('admin/transitmode_insert_form', $data);
 	}
 	public function transitmode_insert()
@@ -439,12 +579,14 @@ class Dashboard extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->model('Admin');
 		if ($this->input->post('submit')) {
+			$ttid = $this->form_validation->set_rules('ttid', 'Transit Type', 'required');
 			$transitmode = $this->form_validation->set_rules('transitmode', 'Transit Mode', 'required');
 			if ($this->form_validation->run() == FALSE) {
 				$this->transitmode_insert_form();
 			} else {
+				$ttid = $this->input->post('ttid');
 				$transitmode = $this->input->post('transitmode');
-				$ins = $this->Admin->transitmode_insert($transitmode);
+				$ins = $this->Admin->transitmode_insert($ttid,$transitmode);
 
 				if ($ins == TRUE) {
 					$this->session->set_flashdata('Successfully', 'Successfully Inserted');
@@ -740,7 +882,7 @@ class Dashboard extends CI_Controller
 	
 			$factoryid = $this->form_validation->set_rules('factoryid', 'Billing Unit', 'required');
 			if ($this->form_validation->run() == FALSE) {
-				$this->movement_insert_form();
+				$this->movement_insert_form1();
 			} else {
 				$userid = $this->input->post('userid');
 				$lmauserid = $this->input->post('lmauserid');
@@ -1230,6 +1372,51 @@ class Dashboard extends CI_Controller
 		{
 			$data['ul'] = $this->Admin->unit_wise_summary_list_all($pd,$wd);
 			$this->load->view('admin/unit_wise_summary_list', $data);
+		}
+	}
+	public function bill_type_wise_summary_list_form()
+	{
+		$this->load->database();
+		$this->load->model('Admin');
+		$data['title'] = 'Bill Type Wise Summary List';
+		$this->load->view('admin/head', $data);
+		$this->load->view('admin/toprightnav');
+		$this->load->view('admin/leftmenu');
+		$data['fl'] = $this->Admin->factory_list();
+		$data['ul'] = $this->Admin->transittype_list();
+		$this->load->view('admin/bill_type_wise_summary_list_form', $data);
+	}
+	public function bill_type_wise_summary_list()
+	{
+		$this->load->database();
+		$this->load->model('Admin');
+		$pd = $this->input->post('pd');
+		$wd = $this->input->post('wd');
+		$factoryid = $this->input->post('factoryid');
+		$ttid = $this->input->post('ttid');
+		$data['pd'] = $pd;
+		$data['wd'] = $wd;
+		//$userid = $this->session->userdata('userid');
+		if($factoryid=='' && $ttid!='')
+		{
+			$data['ul'] = $this->Admin->bill_type_wise_summary_list_ttid($pd,$wd,$ttid);
+			$this->load->view('admin/bill_type_wise_summary_list', $data);
+		}
+		elseif($ttid=='' && $factoryid!='')
+		{
+			$data['ul'] = $this->Admin->bill_type_wise_summary_list_factoryid($pd,$wd,$factoryid);
+			$this->load->view('admin/bill_type_wise_summary_list', $data);
+		}
+		
+		elseif($factoryid!='' && $ttid!='')
+		{
+			$data['ul'] = $this->Admin->bill_type_wise_summary_list($pd,$wd,$factoryid,$ttid);
+			$this->load->view('admin/bill_type_wise_summary_list', $data);
+		}
+		elseif($factoryid=='' && $ttid=='')
+		{
+			$data['ul'] = $this->Admin->bill_type_wise_summary_list_all($pd,$wd);
+			$this->load->view('admin/bill_type_wise_summary_list', $data);
 		}
 	}
 	public function movement_bill_print()

@@ -7,9 +7,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+ <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">-->
+  <?php /*?><link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/font-awesome.min.css"><?php */?>
   <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <?php /*?><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"><?php */?>
+  <?php /*?><link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/ionicons.min.css"><?php */?>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/bower_components/Ionicons/css/ionicons.min.css">
@@ -30,7 +32,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <?php /*?><link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/menu/doc.min.css"><?php */?>
   
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/fonts/css.css">
   <script src="<?php echo base_url(); ?>assets/admin/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/admin/plugins/iCheck/icheck.min.js"></script>
@@ -55,6 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url(); ?>assets/admin/js/menu/docs.js"></script>
   <script src="<?php echo base_url(); ?>assets/admin/js/morris.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/admin/js/raphael.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/admin/js/Chart.min.js"></script>
   
   <title><?php echo $title; ?></title>
 </head>

@@ -68,25 +68,25 @@ em{color:red;}
                 <div class="box-body">
 				 <form role="form" autocomplete="off" action="<?php echo base_url();?>Dashboard/movement_insert1" method="post" enctype="multipart/form-data">
                  	<div class="form-group">
-                    	<label>User ID<em>*</em></label>
+                    	<label>User ID</label>
 						<input type="text" class="form-control" name="userid" readonly value="<?php echo $this->session->userdata('userid');?>">
 					</div>
                     <div class="form-group">
-                    	<label>Line Manager ID<em>*</em></label>
+                    	<label>Line Manager ID</label>
 						<input type="text" class="form-control" name="lmauserid" readonly value="<?php echo $this->session->userdata('lmauserid');?>">
 					</div>
                     	
                     <div class="form-group">
-                    <label>Department Head ID<em>*</em></label>
+                    <label>Department Head ID</label>
 						<input type="text" class="form-control" name="depthuserid" readonly value="<?php echo $this->session->userdata('depthheadid');?>">
 					</div>
-                    <label>Accounts ID<em>*</em></label>
+                    <!--<label>Accounts ID<em>*</em></label>-->
                     <div class="form-group">
-						<input type="text" class="form-control" name="accuserid" readonly value="<?php echo $this->session->userdata('accuserid');?>">
+						<input type="hidden" class="form-control" name="accuserid" readonly value="<?php echo $this->session->userdata('accuserid');?>">
 					</div>
-                    <label>Accounts Head ID<em>*</em></label>
+                    <!--<label>Accounts Head ID<em>*</em></label>-->
                     <div class="form-group">
-						<input type="text" class="form-control" name="accheadid" readonly value="<?php echo $this->session->userdata('accheadid');?>">
+						<input type="hidden" class="form-control" name="accheadid" readonly value="<?php echo $this->session->userdata('accheadid');?>">
 					</div>
                     <div class="row">
                  	<div class="col-md-6 col-lg-6">

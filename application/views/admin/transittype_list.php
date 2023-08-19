@@ -67,7 +67,7 @@
                 <!-- USERS LIST -->
                 <div class="box box-danger">
                   <div class="box-header with-border">
-                    <h3 class="box-title">Transit Mode Info</h3>
+                    <h3 class="box-title">Transit Type Info</h3>
                     <div class="row">
                       <div class="col-sm-12 col-md-12 col-lg-12">
                         <?php /*?><?php if($responce = $this->session->flashdata('Successfully')): ?>
@@ -87,8 +87,8 @@
                           <th>SL</th>
 
                           <!--<th>ID</th>-->
+
                           <th>Transit Type</th>
-                          <th>Transit Mode</th>
                           <!--<th>Edit</th>-->
                         </tr>
                       </thead>
@@ -100,8 +100,8 @@
 
                             <td style="vertical-align:middle;"><?php echo $i++; ?></td>
                             <?php /*?><td style="vertical-align:middle;"><?php echo $row['deptid'];?></td><?php */ ?>
+
                             <td style="vertical-align:middle;"><?php echo $row['transittype']; ?></td>
-                            <td style="vertical-align:middle;"><?php echo $row['transit']; ?></td>
                             <?php /*?><td style="vertical-align:middle;"><a href="<?php echo base_url();?>Dashboard/department_list_up/<?php echo $bn=$row['deptid'];?>"><i class="fa fa-edit" style="font-size:24px"></i></a></td><?php */ ?>
 
 

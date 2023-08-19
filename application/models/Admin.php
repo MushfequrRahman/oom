@@ -128,21 +128,41 @@ class Admin extends CI_Model
 		$sql = "UPDATE usertype SET usertype='$usertype' WHERE usertypeid='$usertypeid'";
 		$query = $this->db->query($sql);
 	}
-	public function transitmode_insert($transitmode)
+	public function transittype_insert($transittype)
+	{
+		$sql = "SELECT * FROM transittype WHERE transittype='$transittype'";
+		$query = $this->db->query($sql);
+		if ($query->num_rows() == 1) {
+			return false;
+		} else {
+			$sql = "INSERT INTO transittype VALUES ('','$transittype')";
+			$query = $this->db->query($sql);
+			return $query;
+		}
+	}
+	public function transittype_list()
+	{
+		$query = "SELECT * FROM transittype ORDER BY transittype ASC";
+		$result = $this->db->query($query);
+		return $result->result_array();
+	}
+	public function transitmode_insert($ttid,$transitmode)
 	{
 		$sql = "SELECT * FROM transitmode WHERE transit='$transitmode'";
 		$query = $this->db->query($sql);
 		if ($query->num_rows() == 1) {
 			return false;
 		} else {
-			$sql = "INSERT INTO transitmode VALUES ('','$transitmode')";
+			$sql = "INSERT INTO transitmode VALUES ('','$ttid','$transitmode')";
 			$query = $this->db->query($sql);
 			return $query;
 		}
 	}
 	public function transitmode_list()
 	{
-		$query = "SELECT * FROM transitmode ORDER BY transit ASC";
+		$query = "SELECT * FROM transitmode 
+		JOIN transittype ON transittype.ttid=transitmode.ttid
+		ORDER BY transit ASC";
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
@@ -323,6 +343,10 @@ class Admin extends CI_Model
 	public function movement_insert1($userid,$lmauserid,$depthuserid,$accuserid,$accheadid,$fdate,$tdate,$factoryid)
 	{
 		date_default_timezone_set('Asia/Dhaka');
+
+		$fmy=strtotime($fdate);
+		$month=date("F",$fmy);
+		$year=date("Y",$fmy);
 		$fdate=date("Y-m-d", strtotime($fdate));
 		$tdate=date("Y-m-d", strtotime($tdate));
 		$d=date('Y-m-d');
@@ -330,7 +354,7 @@ class Admin extends CI_Model
 		$d1=str_replace("-","",$d);
 		$t1=str_replace(":","",$t);
 		$ccid=$d1.$t1;
-		$sql = "INSERT INTO movement_insert1 VALUES ('$ccid','$userid','$lmauserid','$depthuserid','$accuserid','$accheadid','$fdate','$tdate','1','$factoryid')";
+		$sql = "INSERT INTO movement_insert1 VALUES ('$ccid','$userid','$lmauserid','$depthuserid','$accuserid','$accheadid','$fdate','$tdate','1','$factoryid',CURDATE(),CURTIME(),'$month','$year')";
 		$query = $this->db->query($sql);
 		return $query;
 	}
@@ -761,6 +785,118 @@ class Admin extends CI_Model
 		JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
 		JOIN user ON user.userid=movement_insert1.userid
 		WHERE fdate BETWEEN '$pd' AND '$wd' AND lmauserid='$userid' AND userid='$uid'";
+		$result = $this->db->query($query);
+		return $result->result_array();
+	}
+	public function bill_type_wise_summary_list($pd,$wd,$factoryid,$ttid)
+	{
+		$pd = date("Y-m-d", strtotime($pd));
+		$wd = date("Y-m-d", strtotime($wd));
+		$query = "SELECT 
+
+		fdate,tdate,fplace,ftime,mid,mstatus,tplace,ttime,taka,purpose,billingunit,transittype,transit,remarks,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.userid) AS username,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.userid) AS userid,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.lmauserid) AS lname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.lmauserid) AS lid,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.depthheadid) AS dname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.depthheadid) AS did,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.accuserid) AS aname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.accuserid) AS aid,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.accheadid) AS ahname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.accheadid) AS ahid  
+
+
+ FROM movement_insert1
+
+		LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
+		JOIN transitmode ON transitmode.tmid= movement_bill_insert1.mode
+		JOIN transittype ON transittype.ttid=transitmode.ttid
+		WHERE fdate BETWEEN '$pd' AND '$wd' AND (billingunit='$factoryid' AND transitmode.ttid='$ttid' AND mstatus!=0)";
+		$result = $this->db->query($query);
+		return $result->result_array();
+	}
+	public function bill_type_wise_summary_list_ttid($pd,$wd,$ttid)
+	{
+		$pd = date("Y-m-d", strtotime($pd));
+		$wd = date("Y-m-d", strtotime($wd));
+		$query = "SELECT 
+
+		fdate,tdate,fplace,ftime,mid,mstatus,tplace,ttime,taka,purpose,billingunit,transittype,transit,remarks,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.userid) AS username,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.userid) AS userid,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.lmauserid) AS lname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.lmauserid) AS lid,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.depthheadid) AS dname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.depthheadid) AS did,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.accuserid) AS aname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.accuserid) AS aid,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.accheadid) AS ahname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.accheadid) AS ahid  
+
+
+ FROM movement_insert1
+
+		LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
+		JOIN transitmode ON transitmode.tmid= movement_bill_insert1.mode
+		JOIN transittype ON transittype.ttid=transitmode.ttid
+		WHERE fdate BETWEEN '$pd' AND '$wd' AND (transitmode.ttid='$ttid' AND mstatus!=0)";
+		$result = $this->db->query($query);
+		return $result->result_array();
+	}
+	public function bill_type_wise_summary_list_factoryid($pd,$wd,$factoryid)
+	{
+		$pd = date("Y-m-d", strtotime($pd));
+		$wd = date("Y-m-d", strtotime($wd));
+		$query = "SELECT 
+
+		fdate,tdate,fplace,ftime,mid,mstatus,tplace,ttime,taka,purpose,billingunit,transittype,transit,remarks,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.userid) AS username,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.userid) AS userid,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.lmauserid) AS lname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.lmauserid) AS lid,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.depthheadid) AS dname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.depthheadid) AS did,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.accuserid) AS aname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.accuserid) AS aid,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.accheadid) AS ahname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.accheadid) AS ahid  
+
+
+ FROM movement_insert1
+
+		LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
+		JOIN transitmode ON transitmode.tmid= movement_bill_insert1.mode
+		JOIN transittype ON transittype.ttid=transitmode.ttid
+		WHERE fdate BETWEEN '$pd' AND '$wd' AND (billingunit='$factoryid' AND mstatus!=0)";
+		$result = $this->db->query($query);
+		return $result->result_array();
+	}
+	public function bill_type_wise_summary_list_all($pd,$wd)
+	{
+		$pd = date("Y-m-d", strtotime($pd));
+		$wd = date("Y-m-d", strtotime($wd));
+		$query = "SELECT 
+
+		fdate,tdate,fplace,ftime,mid,mstatus,tplace,ttime,taka,purpose,billingunit,transittype,transit,remarks,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.userid) AS username,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.userid) AS userid,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.lmauserid) AS lname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.lmauserid) AS lid,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.depthheadid) AS dname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.depthheadid) AS did,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.accuserid) AS aname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.accuserid) AS aid,
+		(SELECT name FROM user WHERE user.userid=movement_insert1.accheadid) AS ahname,
+		(SELECT userid FROM user WHERE user.userid=movement_insert1.accheadid) AS ahid  
+
+
+ FROM movement_insert1
+
+		LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
+		JOIN transitmode ON transitmode.tmid= movement_bill_insert1.mode
+		JOIN transittype ON transittype.ttid=transitmode.ttid
+		WHERE fdate BETWEEN '$pd' AND '$wd' AND  mstatus!=0";
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}

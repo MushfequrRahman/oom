@@ -125,6 +125,18 @@
 								<li><a href="<?php echo base_url(); ?>Dashboard/accountshead_list"><i class="fa fa-circle-o"></i>Accounts Head List</a></li>
 							</ul>
 						</li>
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-id-card" aria-hidden="true"></i> <span>Transit Type</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="<?php echo base_url(); ?>Dashboard/transittype_insert_form"><i class="fa fa-circle-o"></i> Add Transit Type</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/transittype_list"><i class="fa fa-circle-o"></i>Transit Type List</a></li>
+							</ul>
+						</li>
                         <li class="treeview">
 							<a href="#">
 								<i class="fa fa-id-card" aria-hidden="true"></i> <span>Transit mode</span>
@@ -215,7 +227,7 @@
 								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/unit_wise_summary_list_form"><i class="fa fa-circle-o"></i>Unit Wise List</a></li>
-                                
+                                <li><a href="<?php echo base_url(); ?>Dashboard/bill_type_wise_summary_list_form"><i class="fa fa-circle-o"></i>Bill Type Wise List</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -543,7 +555,7 @@
 								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/unit_wise_summary_list_form"><i class="fa fa-circle-o"></i>Unit Wise List</a></li>
-                                
+                                <li><a href="<?php echo base_url(); ?>Dashboard/bill_type_wise_summary_list_form"><i class="fa fa-circle-o"></i>Bill Type Wise List</a></li>
 							</ul>
 						</li>
 					</ul>

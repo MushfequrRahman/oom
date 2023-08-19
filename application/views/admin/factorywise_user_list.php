@@ -51,8 +51,8 @@
           <th>ID</th>
           <th>Name</th>
           <th>Factory</th>
-          <th>Designation</th>
           <th>Department</th>
+          <th>Designation</th>
           <th>Mobile</th>
           <th>User Type</th>
           <th>User Status</th>
