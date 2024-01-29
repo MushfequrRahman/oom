@@ -118,7 +118,7 @@
 				datasets: [{
 					label: "Monthly Unit Wise Bill",
 					fill: false,
-					backgroundColor: ['#01B0f1', '#FEC000', '#000000', '#01CC00', '#01B0f1', '#FEC000', '#000000', '#01B0f1', '#FEC000', '#000000','#FD0100','#FD0100','#FD0100','#FD0100'],
+					backgroundColor: ['#008000', '#AFE1AF', '#023020', '#50C878', '#4F7942', '#228B22', '#7CFC00', '#008000', '#355E3B', '#00A36C', '#2AAA8A', '#4CBB17', '#90EE90', '#32CD32'],
 					borderColor: 'black',
 					//data: [85, 60,70, 50, 18, 20, 45, 30, 20],
 					data: cData.data,
@@ -168,7 +168,7 @@
 				datasets: [{
 					label: "Monthly Department Wise Bill",
 					fill: false,
-					backgroundColor: ['#01B0f1', '#FEC000', '#000000', '#01CC00', '#01B0f1', '#FEC000', '#000000', '#01B0f1', '#FEC000', '#000000','#FD0100','#FD0100','#FD0100','#FD0100'],
+					backgroundColor: ['#008000', '#AFE1AF', '#023020', '#50C878', '#4F7942', '#228B22', '#7CFC00', '#008000', '#355E3B', '#00A36C', '#2AAA8A', '#4CBB17', '#90EE90', '#32CD32'],
 					borderColor: 'black',
 					//data: [85, 60,70, 50, 18, 20, 45, 30, 20],
 					data: cData.data,

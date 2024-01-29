@@ -942,9 +942,6 @@ class Dashboard extends CI_Controller
 		else
 		{
 
-		
-		
-		
 		for ($i = 0; $i < count($mode); $i++) {
 			$data["i"] = $i;
 			$data["mtoken"] = $mtoken;
