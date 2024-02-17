@@ -777,6 +777,35 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
+	public function date_wise_approval_details_list($pd,$wd)
+	{
+		$pd = date("Y-m-d", strtotime($pd));
+		$wd = date("Y-m-d", strtotime($wd));
+		$query = "SELECT mid,fdate,tdate,billingunit,user.userid,name,departmentname,user.lmauserid,
+		user.depthheadid,
+		user.accuserid,mid,mstatus,
+				(SELECT name FROM user WHERE user.userid=movement_insert1.userid) AS username,
+				(SELECT userid FROM user WHERE user.userid=movement_insert1.userid) AS userid,
+				
+				(SELECT name FROM user WHERE user.userid=movement_insert1.lmauserid) AS lname,
+				(SELECT userid FROM user WHERE user.userid=movement_insert1.lmauserid) AS lid,
+				(SELECT name FROM user WHERE user.userid=movement_insert1.depthheadid) AS dname,
+				(SELECT userid FROM user WHERE user.userid=movement_insert1.depthheadid) AS did,
+				(SELECT name FROM user WHERE user.userid=movement_insert1.accuserid) AS aname,
+				(SELECT userid FROM user WHERE user.userid=movement_insert1.accuserid) AS aid,
+				(SELECT name FROM user WHERE user.userid=movement_insert1.accheadid) AS ahname,
+				(SELECT userid FROM user WHERE user.userid=movement_insert1.accheadid) AS ahid,
+				transit,transittype,taka,smonth,syear
+				FROM movement_insert1
+				JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
+				JOIN user_department_details ON user_department_details.userid=movement_insert1.userid
+				JOIN transitmode ON transitmode.tmid=movement_bill_insert1.mode
+				JOIN transittype ON transittype.ttid=transitmode.ttid
+				JOIN user ON user.userid=movement_insert1.userid
+		WHERE fdate BETWEEN '$pd' AND '$wd'";
+		$result = $this->db->query($query);
+		return $result->result_array();
+	}
 	public function user_wise_approval_list($uid,$pd,$wd,$userid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));

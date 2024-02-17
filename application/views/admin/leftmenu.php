@@ -203,7 +203,7 @@
 							<ul class="treeview-menu">
 								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
-                                
+                                <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -226,6 +226,7 @@
 							<ul class="treeview-menu">
 								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/unit_wise_summary_list_form"><i class="fa fa-circle-o"></i>Unit Wise List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/bill_type_wise_summary_list_form"><i class="fa fa-circle-o"></i>Bill Type Wise List</a></li>
 							</ul>
@@ -446,7 +447,7 @@
 							<ul class="treeview-menu">
 								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
-                                
+                                <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -500,7 +501,7 @@
 							<ul class="treeview-menu">
 								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
-                                
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -554,6 +555,7 @@
 							<ul class="treeview-menu">
 								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/unit_wise_summary_list_form"><i class="fa fa-circle-o"></i>Unit Wise List</a></li>
                                 <li><a href="<?php echo base_url(); ?>Dashboard/bill_type_wise_summary_list_form"><i class="fa fa-circle-o"></i>Bill Type Wise List</a></li>
 							</ul>

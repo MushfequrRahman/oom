@@ -1162,6 +1162,50 @@ class Dashboard extends CI_Controller
 			$this->load->view('admin/date_wise_approval_list_accounts', $data);
 		}
 	}
+	public function date_wise_approval_details_list()
+	{
+		$this->load->database();
+		$this->load->model('Admin');
+		$pd = $this->input->post('pd');
+		$wd = $this->input->post('wd');
+		$data['pd'] = $pd;
+		$data['wd'] = $wd;
+		$userid = $this->session->userdata('userid');
+		//$depthheadid = $this->session->userdata('depthheadid');
+		$usertype = $this->session->userdata('user_type');
+		$data['ul'] =$this->Admin->date_wise_approval_details_list($pd, $wd);
+		$this->load->view('admin/date_wise_approval_details_list', $data);
+		
+		// if ($usertype == '1') {
+		// 	$data['ul'] = $this->Admin->date_wise_approval_list_admin($pd, $wd, $userid);
+		// 	$this->load->view('admin/date_wise_approval_list', $data);
+		// } elseif ($usertype == '3' || $usertype == '4') {
+		// 	$data['ul'] = $this->Admin->date_wise_approval_list($pd, $wd, $userid);
+		// 	$this->load->view('admin/date_wise_approval_list', $data);
+		// } elseif ($usertype == '2') {
+		// 	$data['ul'] = $this->Admin->date_wise_approval_list($pd, $wd, $userid);
+		// 	$this->load->view('admin/date_wise_approval_list_user', $data);
+		// } elseif ($usertype == '5') {
+		// 	$data['ul'] = $this->Admin->date_wise_approval_list_accounts($pd, $wd, $userid);
+		// 	$this->load->view('admin/date_wise_approval_list_accounts', $data);
+		// } elseif ($usertype == '6') {
+		// 	$data['ul'] = $this->Admin->date_wise_approval_list_accountshead($pd, $wd, $userid);
+		// 	$this->load->view('admin/date_wise_approval_list_accounts', $data);
+		// } elseif ($usertype == '7') {
+		// 	$data['ul'] = $this->Admin->date_wise_approval_list_accountscommon($pd, $wd);
+		// 	$this->load->view('admin/date_wise_approval_list_accounts', $data);
+		// }
+	}
+	public function date_wise_approval_details_list_form()
+	{
+		$this->load->database();
+		$this->load->model('Admin');
+		$data['title'] = 'Date Wise Approved List';
+		$this->load->view('admin/head', $data);
+		$this->load->view('admin/toprightnav');
+		$this->load->view('admin/leftmenu');
+		$this->load->view('admin/date_wise_approval_details_list_form', $data);
+	}
 	public function date_wise_approval_list_xls()
 	{
 		$this->load->database();

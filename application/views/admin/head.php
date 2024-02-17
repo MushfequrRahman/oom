@@ -27,6 +27,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <?php /*?><link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/bootstrap-colorpicker.min.css"><?php */?>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/bootstrap-timepicker.min.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/morris.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/theme.blue.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/theme.bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/styles.css">
  <?php /*?> <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/menu/bootstrap-submenu.css"><?php */?>
   <?php /*?><link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/menu/doc.min.css"><?php */?>
@@ -34,6 +36,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- Google Font -->
   <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/fonts/css.css">
+  
+  
   <script src="<?php echo base_url(); ?>assets/admin/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/admin/plugins/iCheck/icheck.min.js"></script>
@@ -58,6 +62,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url(); ?>assets/admin/js/menu/docs.js"></script>
   <script src="<?php echo base_url(); ?>assets/admin/js/morris.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/admin/js/raphael.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/admin/js/jquery.tablesorter.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/admin/js/jquery.tablesorter.widgets.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/admin/js/widget-math.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/admin/js/Chart.min.js"></script>
   
   <title><?php echo $title; ?></title>
