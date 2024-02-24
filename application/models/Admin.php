@@ -783,7 +783,7 @@ class Admin extends CI_Model
 		$wd = date("Y-m-d", strtotime($wd));
 		$query = "SELECT mid,fdate,tdate,billingunit,user.userid,name,departmentname,user.lmauserid,
 		user.depthheadid,
-		user.accuserid,mid,mstatus,
+		user.accuserid,mid,mstatus,accappuser,
 				(SELECT name FROM user WHERE user.userid=movement_insert1.userid) AS username,
 				(SELECT userid FROM user WHERE user.userid=movement_insert1.userid) AS userid,
 				

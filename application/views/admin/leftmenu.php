@@ -2,11 +2,11 @@
 	<section class="sidebar">
 		<ul class="sidebar-menu" data-widget="tree">
 			<li class="header">OUT OF OFFICE MANAGEMENT(version-2)</li>
-           										 
-                                                 
-                                                 <!--ADMIN-->
-			
-			
+
+
+			<!--ADMIN-->
+
+
 			<?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '1') { ?>
 				<li class="treeview">
 					<a href="#">
@@ -52,7 +52,7 @@
 								<li><a href="<?php echo base_url(); ?>Dashboard/designation_list"><i class="fa fa-circle-o"></i>Designation List</a></li>
 							</ul>
 						</li>
-                        
+
 						<li class="treeview">
 							<a href="#">
 								<i class="fa fa-id-card" aria-hidden="true"></i> <span>User Type</span>
@@ -77,7 +77,7 @@
 								<li><a href="<?php echo base_url(); ?>Dashboard/userstatus_list"><i class="fa fa-circle-o"></i>User Status List</a></li>
 							</ul>
 						</li>
-                        <li class="treeview">
+						<li class="treeview">
 							<a href="#">
 								<i class="fa fa-id-card" aria-hidden="true"></i> <span>Line Manager</span>
 								<span class="pull-right-container">
@@ -89,7 +89,7 @@
 								<li><a href="<?php echo base_url(); ?>Dashboard/linemanager_list"><i class="fa fa-circle-o"></i>Line Manager List</a></li>
 							</ul>
 						</li>
-                        <li class="treeview">
+						<li class="treeview">
 							<a href="#">
 								<i class="fa fa-id-card" aria-hidden="true"></i> <span>Department Head</span>
 								<span class="pull-right-container">
@@ -101,7 +101,7 @@
 								<li><a href="<?php echo base_url(); ?>Dashboard/depthhead_list"><i class="fa fa-circle-o"></i>Department Head List</a></li>
 							</ul>
 						</li>
-                        <li class="treeview">
+						<li class="treeview">
 							<a href="#">
 								<i class="fa fa-id-card" aria-hidden="true"></i> <span>Accounts</span>
 								<span class="pull-right-container">
@@ -113,7 +113,7 @@
 								<li><a href="<?php echo base_url(); ?>Dashboard/accounts_list"><i class="fa fa-circle-o"></i>Accounts User List</a></li>
 							</ul>
 						</li>
-                        <li class="treeview">
+						<li class="treeview">
 							<a href="#">
 								<i class="fa fa-id-card" aria-hidden="true"></i> <span>Accounts Head</span>
 								<span class="pull-right-container">
@@ -137,7 +137,7 @@
 								<li><a href="<?php echo base_url(); ?>Dashboard/transittype_list"><i class="fa fa-circle-o"></i>Transit Type List</a></li>
 							</ul>
 						</li>
-                        <li class="treeview">
+						<li class="treeview">
 							<a href="#">
 								<i class="fa fa-id-card" aria-hidden="true"></i> <span>Transit mode</span>
 								<span class="pull-right-container">
@@ -162,7 +162,7 @@
 						</li>
 					</ul>
 				</li>
-                <li class="treeview">
+				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info" aria-hidden="true"></i><span>Movement</span>
 						<span class="pull-right-container">
@@ -178,14 +178,14 @@
 								</span>
 							</a>
 							<ul class="treeview-menu">
-							
-                                <li><a href="<?php echo base_url(); ?>Dashboard/movement_insert_form1"><i class="fa fa-circle-o"></i>Add Movement Info</a></li>
+
+								<li><a href="<?php echo base_url(); ?>Dashboard/movement_insert_form1"><i class="fa fa-circle-o"></i>Add Movement Info</a></li>
 								<li><a href="<?php echo base_url(); ?>Dashboard/movement_list"><i class="fa fa-circle-o"></i>Movement List</a></li>
 							</ul>
 						</li>
 					</ul>
 				</li>
-                <li class="treeview">
+				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info" aria-hidden="true"></i><span>Approval</span>
 						<span class="pull-right-container">
@@ -202,13 +202,13 @@
 							</a>
 							<ul class="treeview-menu">
 								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
 							</ul>
 						</li>
 					</ul>
 				</li>
-                <li class="treeview">
+				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info" aria-hidden="true"></i><span>Acc. Approval</span>
 						<span class="pull-right-container">
@@ -225,24 +225,24 @@
 							</a>
 							<ul class="treeview-menu">
 								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
 								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/unit_wise_summary_list_form"><i class="fa fa-circle-o"></i>Unit Wise List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/bill_type_wise_summary_list_form"><i class="fa fa-circle-o"></i>Bill Type Wise List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/unit_wise_summary_list_form"><i class="fa fa-circle-o"></i>Unit Wise List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/bill_type_wise_summary_list_form"><i class="fa fa-circle-o"></i>Bill Type Wise List</a></li>
 							</ul>
 						</li>
 					</ul>
 				</li>
-				
-				
+
+
 			<?php
 			} ?>
 
 			<?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '2') { ?>
-            
-            												<!--USER-->
-				
-                <li class="treeview">
+
+				<!--USER-->
+
+				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info" aria-hidden="true"></i><span>Movement</span>
 						<span class="pull-right-container">
@@ -264,7 +264,7 @@
 						</li>
 					</ul>
 				</li>
-                <li class="treeview">
+				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info" aria-hidden="true"></i><span>Approval</span>
 						<span class="pull-right-container">
@@ -280,22 +280,22 @@
 								</span>
 							</a>
 							<ul class="treeview-menu">
-								
-                                <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
-                               
+
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
+
 							</ul>
 						</li>
 					</ul>
 				</li>
-				
-				
+
+
 			<?php
 			} ?>
-            
-            													<!--LINE MANAGER-->
-            
-            <?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '3') { ?>
-                <li class="treeview">
+
+			<!--LINE MANAGER-->
+
+			<?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '3') { ?>
+				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info" aria-hidden="true"></i><span>Movement</span>
 						<span class="pull-right-container">
@@ -317,63 +317,7 @@
 						</li>
 					</ul>
 				</li>
-                <li class="treeview">
-					<a href="#">
-						<i class="fa fa-info" aria-hidden="true"></i><span>Approval</span>
-						<span class="pull-right-container">
-							<i class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-					<ul class="treeview-menu">
-						<li class="treeview">
-							<a href="#">
-								<i class="fa fa-industry" aria-hidden="true"></i><span>Approval</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/user_wise_approval_list_form"><i class="fa fa-circle-o"></i>User Wise List</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				
-				
-			<?php
-			} ?>
-            
-            
-            
-            <?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '4') { ?>
-            
-            											<!--DEPARTMENT HEAD-->
-                            
-                <li class="treeview">
-					<a href="#">
-						<i class="fa fa-info" aria-hidden="true"></i><span>Movement</span>
-						<span class="pull-right-container">
-							<i class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-					<ul class="treeview-menu">
-						<li class="treeview">
-							<a href="#">
-								<i class="fa fa-industry" aria-hidden="true"></i><span>Movement</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="<?php echo base_url(); ?>Dashboard/movement_insert_form1"><i class="fa fa-circle-o"></i>Add Movement Info</a></li>
-								<li><a href="<?php echo base_url(); ?>Dashboard/movement_list"><i class="fa fa-circle-o"></i>Movement List</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-                <li class="treeview">
+				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info" aria-hidden="true"></i><span>Approval</span>
 						<span class="pull-right-container">
@@ -390,24 +334,24 @@
 							</a>
 							<ul class="treeview-menu">
 								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
-                                <?php /*?><li><a href="<?php echo base_url(); ?>Dashboard/user_wise_approval_list_form"><i class="fa fa-circle-o"></i>User Wise List</a></li><?php */?>
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/user_wise_approval_list_form"><i class="fa fa-circle-o"></i>User Wise List</a></li>
 							</ul>
 						</li>
 					</ul>
 				</li>
-				
-				
+
+
 			<?php
 			} ?>
-            
-            
-            
-             <?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '5') { ?>
-            
-            												<!--ACCOUNTS-->
-                            
-                <li class="treeview">
+
+
+
+			<?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '4') { ?>
+
+				<!--DEPARTMENT HEAD-->
+
+				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info" aria-hidden="true"></i><span>Movement</span>
 						<span class="pull-right-container">
@@ -429,7 +373,63 @@
 						</li>
 					</ul>
 				</li>
-                <li class="treeview">
+				<li class="treeview">
+					<a href="#">
+						<i class="fa fa-info" aria-hidden="true"></i><span>Approval</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-industry" aria-hidden="true"></i><span>Approval</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
+								<?php /*?><li><a href="<?php echo base_url(); ?>Dashboard/user_wise_approval_list_form"><i class="fa fa-circle-o"></i>User Wise List</a></li><?php */ ?>
+							</ul>
+						</li>
+					</ul>
+				</li>
+
+
+			<?php
+			} ?>
+
+
+
+			<?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '5') { ?>
+
+				<!--ACCOUNTS-->
+
+				<li class="treeview">
+					<a href="#">
+						<i class="fa fa-info" aria-hidden="true"></i><span>Movement</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-industry" aria-hidden="true"></i><span>Movement</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="<?php echo base_url(); ?>Dashboard/movement_insert_form1"><i class="fa fa-circle-o"></i>Add Movement Info</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/movement_list"><i class="fa fa-circle-o"></i>Movement List</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info" aria-hidden="true"></i><span>Acc. Approval</span>
 						<span class="pull-right-container">
@@ -446,76 +446,22 @@
 							</a>
 							<ul class="treeview-menu">
 								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				
-				
-			<?php
-			} ?>
-            
-            <?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '6') { ?>
-            
-            												<!--ACCOUNTS-->
-                            
-                <li class="treeview">
-					<a href="#">
-						<i class="fa fa-info" aria-hidden="true"></i><span>Movement</span>
-						<span class="pull-right-container">
-							<i class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-					<ul class="treeview-menu">
-						<li class="treeview">
-							<a href="#">
-								<i class="fa fa-industry" aria-hidden="true"></i><span>Movement</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="<?php echo base_url(); ?>Dashboard/movement_insert_form1"><i class="fa fa-circle-o"></i>Add Movement Info</a></li>
-								<li><a href="<?php echo base_url(); ?>Dashboard/movement_list"><i class="fa fa-circle-o"></i>Movement List</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-                <li class="treeview">
-					<a href="#">
-						<i class="fa fa-info" aria-hidden="true"></i><span>Acc. Approval</span>
-						<span class="pull-right-container">
-							<i class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-					<ul class="treeview-menu">
-						<li class="treeview">
-							<a href="#">
-								<i class="fa fa-industry" aria-hidden="true"></i><span>Acc. Approval</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
 								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
 							</ul>
 						</li>
 					</ul>
 				</li>
-				
-				
+
+
 			<?php
 			} ?>
-            
-             <?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '7') { ?>
-            
-            												<!--COMMON ACCOUNTS-->
-                            
-                <li class="treeview">
+
+			<?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '6') { ?>
+
+				<!--ACCOUNTS HEAD-->
+
+				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info" aria-hidden="true"></i><span>Movement</span>
 						<span class="pull-right-container">
@@ -537,7 +483,7 @@
 						</li>
 					</ul>
 				</li>
-                <li class="treeview">
+				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info" aria-hidden="true"></i><span>Acc. Approval</span>
 						<span class="pull-right-container">
@@ -554,20 +500,125 @@
 							</a>
 							<ul class="treeview-menu">
 								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
 								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/unit_wise_summary_list_form"><i class="fa fa-circle-o"></i>Unit Wise List</a></li>
-                                <li><a href="<?php echo base_url(); ?>Dashboard/bill_type_wise_summary_list_form"><i class="fa fa-circle-o"></i>Bill Type Wise List</a></li>
 							</ul>
 						</li>
 					</ul>
 				</li>
-				
-				
+
+
 			<?php
 			} ?>
 
+			<?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '7') { ?>
 
+				<!--COMMON ACCOUNTS-->
+
+				<li class="treeview">
+					<a href="#">
+						<i class="fa fa-info" aria-hidden="true"></i><span>Movement</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-industry" aria-hidden="true"></i><span>Movement</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="<?php echo base_url(); ?>Dashboard/movement_insert_form1"><i class="fa fa-circle-o"></i>Add Movement Info</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/movement_list"><i class="fa fa-circle-o"></i>Movement List</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="treeview">
+					<a href="#">
+						<i class="fa fa-info" aria-hidden="true"></i><span>Acc. Approval</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-industry" aria-hidden="true"></i><span>Acc. Approval</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="<?php echo base_url(); ?>Dashboard/approval_pending_list"><i class="fa fa-circle-o"></i>Pending List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/unit_wise_summary_list_form"><i class="fa fa-circle-o"></i>Unit Wise List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/bill_type_wise_summary_list_form"><i class="fa fa-circle-o"></i>Bill Type Wise List</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+
+
+			<?php
+			} ?>
+
+			<?php if ($this->session->userdata('userid') && $this->session->userdata('user_type') == '8') { ?>
+
+													<!--AUDIT-->
+
+				<li class="treeview">
+					<a href="#">
+						<i class="fa fa-info" aria-hidden="true"></i><span>Movement</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-industry" aria-hidden="true"></i><span>Movement</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="<?php echo base_url(); ?>Dashboard/movement_insert_form1"><i class="fa fa-circle-o"></i>Add Movement Info</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/movement_list"><i class="fa fa-circle-o"></i>Movement List</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="treeview">
+					<a href="#">
+						<i class="fa fa-info" aria-hidden="true"></i><span>Approval</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-industry" aria-hidden="true"></i><span>Approval</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_list_form"><i class="fa fa-circle-o"></i>Date Wise List</a></li>
+								<li><a href="<?php echo base_url(); ?>Dashboard/date_wise_approval_details_list_form"><i class="fa fa-circle-o"></i>Date Wise Details List</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+
+
+			<?php
+			} ?>
 
 
 			<?php //endif;

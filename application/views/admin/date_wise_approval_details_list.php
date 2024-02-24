@@ -81,7 +81,7 @@
 
 <!-- /.box-header -->
 <div class="box-body no-padding">
-  
+
   <div class="table-responsive">
     <table id="tableData" class="table table-hover table-bordered">
       <thead style="background:#91b9e6;">
@@ -101,6 +101,8 @@
           <th>Amount</th>
           <th>Month</th>
           <th>Year</th>
+          <th>Status</th>
+          <th>Accounted By</th>
         </tr>
       </thead>
       <tfoot>
@@ -108,6 +110,8 @@
           <th colspan="11">Totals</th>
           <th>&nbsp;</th>
           <th data-math="col-sum">col-sum</th>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
           <th>&nbsp;</th>
           <th>&nbsp;</th>
         </tr>
@@ -132,6 +136,27 @@
             <td style="vertical-align:middle;"><?php echo number_format($row['taka'], 2, '.', ','); ?></td>
             <td style="vertical-align:middle;"><?php echo $row['smonth']; ?></td>
             <td style="vertical-align:middle;"><?php echo $row['syear']; ?></td>
+            <?php
+            if ($row['mstatus'] == 2) {
+            ?>
+              <td style="vertical-align:middle;">Pending</td>
+            <?php
+            } elseif ($row['mstatus'] == 0) {
+            ?>
+              <td style="vertical-align:middle;">Rejected</td>
+            <?php
+            } elseif ($row['mstatus'] == 3) {
+            ?>
+              <td style="vertical-align:middle;">Waiting For Accounts</td>
+              <?php
+            } elseif ($row['mstatus'] == 4) {
+              ?>
+              <td style="vertical-align:middle;">Approved By Accounts</td>
+            <?php
+            }
+            ?>
+
+            <td style="vertical-align:middle;"><?php echo $row['accappuser']; ?></td>
           </tr>
         <?php } ?>
       </tbody>
