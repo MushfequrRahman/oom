@@ -393,15 +393,15 @@ class Admin extends CI_Model
 		$t1=str_replace(":","",$t);
 		$ccid=$d1.$t1;
 		$ccid = $ccid . $data['i'];
-		$sql = "SELECT * FROM movement_insert1 WHERE mid='$data[mtoken]'";
+		$sql = "SELECT mid FROM movement_insert1 WHERE mid='$data[mtoken]'";
 		$query = $this->db->query($sql);
 		if ($query->num_rows() == 0) {
 			return false;
 		} else {
 		$sql1 = "INSERT INTO movement_bill_insert1 VALUES ('$ccid','$data[mtoken]','$data[fplace]','$data[ftime]','$data[tplace]','$data[ttime]','$data[purpose]','$data[mode]','$data[taka]','$data[remarks]')";
 		$query1 = $this->db->query($sql1);
-		$sql2 = "UPDATE movement_insert1 SET mstatus='2' WHERE mid='$data[mtoken]'";
-		$this->db->query($sql2);
+		// $sql2 = "UPDATE movement_insert1 SET mstatus='2' WHERE mid='$data[mtoken]'";
+		// $this->db->query($sql2);
 		return $query1;
 		}
 	}

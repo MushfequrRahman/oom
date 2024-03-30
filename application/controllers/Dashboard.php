@@ -928,19 +928,22 @@ class Dashboard extends CI_Controller
 		$taka = $this->input->get('taka');
 		$remarks = $this->input->get('remarks');
 		$remarks =  str_replace("'", "\'", $remarks);
+
+		$sql2 = "UPDATE movement_insert1 SET mstatus='2' WHERE mid='$mtoken'";
+		$this->db->query($sql2);
 		
-		$sql = "SELECT * FROM movement_insert1 WHERE mid='$mtoken'";
-		$query = $this->db->query($sql);
-		$query = $query->result_array();
-			foreach ($query as $row) {
-				$mstatus = $row['mstatus'];
-			}
-			if ($mstatus == 2) {
-				//return false;
-				echo "Already Submit";
-			}
-		else
-		{
+		// $sql = "SELECT mstatus FROM movement_insert1 WHERE mid='$mtoken'";
+		// $query = $this->db->query($sql);
+		// $query = $query->result_array();
+		// 	foreach ($query as $row) {
+		// 		$mstatus = $row['mstatus'];
+		// 	}
+		// 	if ($mstatus == 2) {
+				
+		// 		echo "Already Submit";
+		// 	}
+		// else
+		// {
 
 		for ($i = 0; $i < count($mode); $i++) {
 			$data["i"] = $i;
@@ -956,7 +959,7 @@ class Dashboard extends CI_Controller
 			$ins = $this->Admin->movement_bill_insert1($data);
 			
 		}
-	}
+	//}
 
 		if ($ins) {
 			echo  "ok";
