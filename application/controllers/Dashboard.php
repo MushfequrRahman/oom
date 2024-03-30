@@ -1028,10 +1028,11 @@ class Dashboard extends CI_Controller
 		$this->load->model('Admin');
 		$data['title'] = 'Bill Check';
 		$mtoken = $this->uri->segment(3);
+		$userid = $this->uri->segment(4);
 		$this->load->view('admin/head', $data);
 		$this->load->view('admin/toprightnav');
 		$this->load->view('admin/leftmenu');
-		$data['ul'] = $this->Admin->movement_bill_check($mtoken);
+		$data['ul'] = $this->Admin->movement_bill_check($mtoken,$userid);
 		$this->load->view('admin/movement_bill_check', $data);
 	}
 	public function approval_pending_list()
@@ -1074,13 +1075,14 @@ class Dashboard extends CI_Controller
 	{
 		$this->load->database();
 		$this->load->model('Admin');
-		$data['title'] = 'Bill Create';
+		$data['title'] = 'Bill Approved';
 		$mtoken = $this->uri->segment(3);
+		$userid = $this->uri->segment(4);
 		$this->load->view('admin/head', $data);
 		$this->load->view('admin/toprightnav');
 		$this->load->view('admin/leftmenu');
 		//$data['mtoken'] = $this->Admin->movement_bill_id($mtoken);
-		$ins = $this->Admin->movement_bill_approved($mtoken);
+		$ins = $this->Admin->movement_bill_approved($mtoken,$userid);
 		if ($ins == TRUE) {
 			$this->session->set_flashdata('Successfully', 'Successfully Approved');
 		} else {
@@ -1094,11 +1096,12 @@ class Dashboard extends CI_Controller
 		$this->load->model('Admin');
 		$data['title'] = 'Bill Create';
 		$mtoken = $this->uri->segment(3);
+		$userid = $this->uri->segment(4);
 		$this->load->view('admin/head', $data);
 		$this->load->view('admin/toprightnav');
 		$this->load->view('admin/leftmenu');
 		//$data['mtoken'] = $this->Admin->movement_bill_id($mtoken);
-		$ins = $this->Admin->movement_bill_reject($mtoken);
+		$ins = $this->Admin->movement_bill_reject($mtoken,$userid);
 		if ($ins == TRUE) {
 			$this->session->set_flashdata('Successfully', 'Successfully Rejected');
 		} else {

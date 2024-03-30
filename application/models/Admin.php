@@ -420,12 +420,12 @@ class Admin extends CI_Model
 		$sql = "UPDATE movement_bill_insert1 SET fplace='$data[fplace]',ftime='$data[ftime]',tplace='$data[tplace]',ttime='$data[ttime]',purpose='$data[purpose]',mode='$data[billtype]',taka='$data[taka]',remarks='$data[remarks]' WHERE mbillid='$data[mbillid]'";
 		return $query = $this->db->query($sql);
 	}
-	public function movement_bill_check($mtoken)
+	public function movement_bill_check($mtoken,$userid)
 	{
 		$query = "SELECT * FROM movement_insert1
 		LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
 		JOIN transitmode ON transitmode.tmid= movement_bill_insert1.mode
-		WHERE movement_insert1.mid='$mtoken'";
+		WHERE movement_insert1.userid='$userid' AND movement_insert1.mid='$mtoken'";
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
@@ -580,14 +580,14 @@ class Admin extends CI_Model
 		return $result->result_array();
 	}
 	
-	public function movement_bill_approved($mtoken)
+	public function movement_bill_approved($mtoken,$userid)
 	{
-		$sql = "UPDATE movement_insert1 SET mstatus='3' WHERE mid='$mtoken'";
+		$sql = "UPDATE movement_insert1 SET mstatus='3' WHERE userid='$userid' AND mid='$mtoken'";
 		return $query = $this->db->query($sql);
 	}
-	public function movement_bill_reject($mtoken)
+	public function movement_bill_reject($mtoken,$userid)
 	{
-		$sql = "UPDATE movement_insert1 SET mstatus='0' WHERE mid='$mtoken'";
+		$sql = "UPDATE movement_insert1 SET mstatus='0' WHERE userid='$userid' AND mid='$mtoken'";
 		return $query = $this->db->query($sql);
 	}
 	public function movement_bill_acc_approved($mtoken)
