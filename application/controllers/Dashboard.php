@@ -1115,11 +1115,12 @@ class Dashboard extends CI_Controller
 		$this->load->model('Admin');
 		$data['title'] = 'Bill Approved';
 		$mtoken = $this->uri->segment(3);
+		$userid = $this->uri->segment(4);
 		$this->load->view('admin/head', $data);
 		$this->load->view('admin/toprightnav');
 		$this->load->view('admin/leftmenu');
 		//$data['mtoken'] = $this->Admin->movement_bill_id($mtoken);
-		$ins = $this->Admin->movement_bill_acc_approved($mtoken);
+		$ins = $this->Admin->movement_bill_acc_approved($mtoken,$userid);
 		if ($ins == TRUE) {
 			$this->session->set_flashdata('Successfully', 'Successfully Approved');
 		} else {

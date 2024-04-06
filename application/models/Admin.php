@@ -590,10 +590,10 @@ class Admin extends CI_Model
 		$sql = "UPDATE movement_insert1 SET mstatus='0' WHERE userid='$userid' AND mid='$mtoken'";
 		return $query = $this->db->query($sql);
 	}
-	public function movement_bill_acc_approved($mtoken)
+	public function movement_bill_acc_approved($mtoken,$userid)
 	{
 		$accappuser = $this->session->userdata('userid');
-		$sql = "UPDATE movement_insert1 SET mstatus='4',accappdate=CURDATE(),accapptime=CURTIME(),accappuser='$accappuser' WHERE mid='$mtoken'";
+		$sql = "UPDATE movement_insert1 SET mstatus='4',accappdate=CURDATE(),accapptime=CURTIME(),accappuser='$accappuser' WHERE userid='$userid' AND mid='$mtoken'";
 		return $query = $this->db->query($sql);
 	}
 	public function date_wise_approval_list_depthhead($pd,$wd,$userid)
