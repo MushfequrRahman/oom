@@ -981,6 +981,20 @@ class Dashboard extends CI_Controller
 		$data['ul'] = $this->Admin->movement_bill_details($mtoken);
 		$this->load->view('admin/movement_bill_details', $data);
 	}
+	public function movement_bill_details_show()
+	{
+		$this->load->database();
+		$this->load->model('Admin');
+		$data['title'] = 'Bill Create';
+		$mtoken = $this->uri->segment(3);
+		$this->load->view('admin/head', $data);
+		$this->load->view('admin/toprightnav');
+		$this->load->view('admin/leftmenu');
+		//$data['mtoken'] = $this->Admin->movement_bill_id($mtoken);
+		$data['ml'] = $this->Admin->transitmode_list();
+		$data['ul'] = $this->Admin->movement_bill_details($mtoken);
+		$this->load->view('admin/movement_bill_details_show', $data);
+	}
 
 	public function movement_bill_update()
 	{

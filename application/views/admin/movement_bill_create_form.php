@@ -59,14 +59,14 @@ foreach ($ml as $row) {
                                                                 <!--<th style="text-align:center;">Bill Date</th>
                                                                 <th style="text-align:center;">Billing Unit</th>-->
                                                                 <!--<th style="text-align:center;">Bill For</th>-->
-                                                                <th style="text-align:center;">Bill Type</th>
-                                                                <th style="text-align:center;">From Place</th>
-                                                                <th style="text-align:center;">From Time</th>
-                                                                <th style="text-align:center;">To Place</th>
-                                                                <th style="text-align:center;">To Time</th>
-                                                                <th style="text-align:center;">Purpose</th>
+                                                                <th style="text-align:center;">Bill Type<em>*</em></th>
+                                                                <th style="text-align:center;">From Place<em>*</em></th>
+                                                                <th style="text-align:center;">From Time<em>*</em></th>
+                                                                <th style="text-align:center;">To Place<em>*</em></th>
+                                                                <th style="text-align:center;">To Time<em>*</em></th>
+                                                                <th style="text-align:center;">Purpose<em>*</em></th>
 
-                                                                <th style="text-align:center;">Taka</th>
+                                                                <th style="text-align:center;">Taka<em>*</em></th>
                                                                 <th style="text-align:center;">Remarks</th>
                                                                 <th style="vertical-align:middle;text-align:center;"><button type="button" name="add" class="btn btn-success btn-xs add"><span class="glyphicon glyphicon-plus"></span></button></th>
                                                             </tr>
@@ -103,7 +103,7 @@ foreach ($ml as $row) {
                 var html = '';
                 html += '<tr>';
 
-                html += '<td><select name="mode[]" class="form-control billtype"><option value="">Select</option><?php echo $transitmode; ?></select></td>';
+                html += '<td><select name="mode[]" class="form-control mode"><option value="">Select</option><?php echo $transitmode; ?></select></td>';
                 html += '<td><input type="text" name="fplace[]" class="form-control fplace" /></td>';
                 html += '<td><input type="text" readonly name="ftime[]" class="form-control ftime timepicker" /></td>';
                 html += '<td><input type="text" name="tplace[]" class="form-control tplace" /></td>';
@@ -135,14 +135,18 @@ foreach ($ml as $row) {
                 var error = '';
 
 
-                //$('.billfor').each(function() {
-                //                    var count = 1;
-                //                    if ($(this).val() == '') {
-                //                        error += '<p>Enter Bill for at ' + count + ' Row</p>';
-                //                        return false;
-                //                    }
-                //                    count = count + 1;
-                //                });
+                $('.mode').each(function() {
+
+                    var count = 1;
+
+                    if ($(this).val() == '') {
+                        error += '<p>Enter Bill Type at ' + count + ' Row</p> ';
+                        return false;
+                    }
+
+                    count = count + 1;
+
+                });
 
                 $('.fplace').each(function() {
                     var count = 1;
@@ -204,18 +208,7 @@ foreach ($ml as $row) {
 
                 });
 
-                $('.billtype').each(function() {
 
-                    var count = 1;
-
-                    if ($(this).val() == '') {
-                        error += '<p>Enter Bill Type at ' + count + ' Row</p> ';
-                        return false;
-                    }
-
-                    count = count + 1;
-
-                });
 
                 $('.taka').each(function() {
 
@@ -247,7 +240,7 @@ foreach ($ml as $row) {
                                 $('#item_table1').find('tr:gt(0)').remove();
                                 $('#error').html('<div class="alert alert-success">Conveyance Bill Details Saved</div>');
                                 // $('input[type="submit"]').attr('disabled', true);
-		
+
                                 window.setTimeout(function() {
                                     location.reload()
                                 }, 3000)

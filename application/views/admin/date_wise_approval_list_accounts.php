@@ -120,7 +120,7 @@ td{font-weight: 600; /*font-variant:small-caps;*/}
                   <?php
 				  }
 				  ?>
-                  <td style="vertical-align:middle;"><a href="<?php echo base_url();?>Dashboard/movement_bill_check/<?php echo $bn=$row['mid'];?>">Details</a></td>
+                  <td style="vertical-align:middle;"><a href="<?php echo base_url();?>Dashboard/movement_bill_details_show/<?php echo $bn=$row['mid'];?>">Details</a></td>
                   
                 </tr>
                 </tbody>

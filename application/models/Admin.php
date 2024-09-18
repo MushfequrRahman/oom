@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Admin extends CI_Model
 {
 
-	public function fac_insert($facid,$facname,$fac_address)
+	public function fac_insert($facid, $facname, $fac_address)
 	{
 		$sql = "SELECT * FROM factory WHERE factoryid='$facid'";
 		$query = $this->db->query($sql);
@@ -146,7 +146,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function transitmode_insert($ttid,$transitmode)
+	public function transitmode_insert($ttid, $transitmode)
 	{
 		$sql = "SELECT * FROM transitmode WHERE transit='$transitmode'";
 		$query = $this->db->query($sql);
@@ -178,7 +178,7 @@ class Admin extends CI_Model
 			return $query;
 		}
 	}
-	
+
 	public function linemanager_list()
 	{
 		$query = "SELECT * FROM line_manager_insert 
@@ -244,7 +244,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function user_insert($factoryid,$departmentid,$designationid,$name,$email,$pmobile,$userid,$password)
+	public function user_insert($factoryid, $departmentid, $designationid, $name, $email, $pmobile, $userid, $password)
 	{
 		$sql = "SELECT * FROM user WHERE userid='$userid'";
 		$query = $this->db->query($sql);
@@ -281,14 +281,14 @@ class Admin extends CI_Model
 		$result = $query1->result_array();
 		return $result;
 	}
-	public function ulup($factoryid, $departmentid, $designationid, $name, $mobile, $usertypeid, $lmuserid, $depthheadid,$accuserid,$accheadid,$userstatusid, $userid, $password, $indate)
+	public function ulup($factoryid, $departmentid, $designationid, $name, $mobile, $usertypeid, $lmuserid, $depthheadid, $accuserid, $accheadid, $userstatusid, $userid, $password, $indate)
 	{
 		$indate = date("Y-m-d", strtotime($indate));
 		$sql = "UPDATE user SET factoryid='$factoryid',departmentid='$departmentid',designationid='$designationid',name='$name',mobile='$mobile',user_type='$usertypeid',lmauserid='$lmuserid',depthheadid='$depthheadid',accuserid='$accuserid',accheadid='$accheadid',password='$password',ustatus='$userstatusid',indate='$indate' WHERE userid='$userid'";
-		
+
 		//$sql1 = "UPDATE movement_insert SET lmauserid='$lmuserid' WHERE userid='$userid'";
-//		
-//		$this->db->query($sql1);
+		//		
+		//		$this->db->query($sql1);
 		return $query = $this->db->query($sql);
 	}
 
@@ -322,43 +322,43 @@ class Admin extends CI_Model
 		$sql = "UPDATE userstatus SET userstatus='$userstatus' WHERE userstatusid='$userstatusid'";
 		$query = $this->db->query($sql);
 	}
-	
-	/////////////////////////////////////////////////////////////MOVEMENT////////////////////////////////////////////////////////////////
-	
-	//public function movement_insert($userid,$lmauserid,$fdate,$tdate,$ftime,$ttime,$purpose,$location,$factoryid)
-//	{
-//		date_default_timezone_set('Asia/Dhaka');
-//		$fdate=date("Y-m-d", strtotime($fdate));
-//		$tdate=date("Y-m-d", strtotime($tdate));
-//		$d=date('Y-m-d');
-//		$t= date("H:i:s");
-//		$d1=str_replace("-","",$d);
-//		$t1=str_replace(":","",$t);
-//		$ccid=$d1.$t1;
-//		$sql = "INSERT INTO movement_insert VALUES ('$ccid','$userid','$lmauserid','$fdate','$tdate','$ftime','$ttime','$purpose','$location','1','$factoryid')";
-//		$query = $this->db->query($sql);
-//		return $query;
-//	}
 
-	public function movement_insert1($userid,$lmauserid,$depthuserid,$accuserid,$accheadid,$fdate,$tdate,$factoryid)
+	/////////////////////////////////////////////////////////////MOVEMENT////////////////////////////////////////////////////////////////
+
+	//public function movement_insert($userid,$lmauserid,$fdate,$tdate,$ftime,$ttime,$purpose,$location,$factoryid)
+	//	{
+	//		date_default_timezone_set('Asia/Dhaka');
+	//		$fdate=date("Y-m-d", strtotime($fdate));
+	//		$tdate=date("Y-m-d", strtotime($tdate));
+	//		$d=date('Y-m-d');
+	//		$t= date("H:i:s");
+	//		$d1=str_replace("-","",$d);
+	//		$t1=str_replace(":","",$t);
+	//		$ccid=$d1.$t1;
+	//		$sql = "INSERT INTO movement_insert VALUES ('$ccid','$userid','$lmauserid','$fdate','$tdate','$ftime','$ttime','$purpose','$location','1','$factoryid')";
+	//		$query = $this->db->query($sql);
+	//		return $query;
+	//	}
+
+	public function movement_insert1($userid, $lmauserid, $depthuserid, $accuserid, $accheadid, $fdate, $tdate, $factoryid)
 	{
 		date_default_timezone_set('Asia/Dhaka');
 
-		$fmy=strtotime($fdate);
-		$month=date("F",$fmy);
-		$year=date("Y",$fmy);
-		$fdate=date("Y-m-d", strtotime($fdate));
-		$tdate=date("Y-m-d", strtotime($tdate));
-		$d=date('Y-m-d');
-		$t= date("H:i:s");
-		$d1=str_replace("-","",$d);
-		$t1=str_replace(":","",$t);
-		$ccid=$d1.$t1;
+		$fmy = strtotime($fdate);
+		$month = date("F", $fmy);
+		$year = date("Y", $fmy);
+		$fdate = date("Y-m-d", strtotime($fdate));
+		$tdate = date("Y-m-d", strtotime($tdate));
+		$d = date('Y-m-d');
+		$t = date("H:i:s");
+		$d1 = str_replace("-", "", $d);
+		$t1 = str_replace(":", "", $t);
+		$ccid = $d1 . $t1;
 		$sql = "INSERT INTO movement_insert1 VALUES ('$ccid','$userid','$lmauserid','$depthuserid','$accuserid','$accheadid','$fdate','$tdate','1','$factoryid',CURDATE(),CURTIME(),'$month','$year','','','')";
 		$query = $this->db->query($sql);
 		return $query;
 	}
-	
+
 
 	public function movement_list($userid)
 	{
@@ -387,27 +387,37 @@ class Admin extends CI_Model
 	public function movement_bill_insert1($data)
 	{
 		date_default_timezone_set('Asia/Dhaka');
-		$d=date('Y-m-d');
-		$t= date("H:i:s");
-		$d1=str_replace("-","",$d);
-		$t1=str_replace(":","",$t);
-		$ccid=$d1.$t1;
+		$d = date('Y-m-d');
+		$t = date("H:i:s");
+		$d1 = str_replace("-", "", $d);
+		$t1 = str_replace(":", "", $t);
+		$ccid = $d1 . $t1;
 		$ccid = $ccid . $data['i'];
 		$sql = "SELECT mid FROM movement_insert1 WHERE mid='$data[mtoken]'";
 		$query = $this->db->query($sql);
 		if ($query->num_rows() == 0) {
 			return false;
 		} else {
-		$sql1 = "INSERT INTO movement_bill_insert1 VALUES ('$ccid','$data[mtoken]','$data[fplace]','$data[ftime]','$data[tplace]','$data[ttime]','$data[purpose]','$data[mode]','$data[taka]','$data[remarks]')";
-		$query1 = $this->db->query($sql1);
-		// $sql2 = "UPDATE movement_insert1 SET mstatus='2' WHERE mid='$data[mtoken]'";
-		// $this->db->query($sql2);
-		return $query1;
+			$sql1 = "INSERT INTO movement_bill_insert1 VALUES ('$ccid','$data[mtoken]','$data[fplace]','$data[ftime]','$data[tplace]','$data[ttime]','$data[purpose]','$data[mode]','$data[taka]','$data[remarks]')";
+			$query1 = $this->db->query($sql1);
+			// $sql2 = "UPDATE movement_insert1 SET mstatus='2' WHERE mid='$data[mtoken]'";
+			// $this->db->query($sql2);
+			return $query1;
 		}
 	}
 	public function movement_bill_details($mtoken)
 	{
-		$query = "SELECT * FROM movement_insert1
+		$query = "SELECT mbillid,fplace,ftime,tplace,ttime,purpose,taka,remarks,mode,tmid,transit FROM movement_insert1
+		LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
+		JOIN transitmode ON transitmode.tmid= movement_bill_insert1.mode
+		WHERE movement_insert1.mid='$mtoken'
+		ORDER BY mbillid ASC";
+		$result = $this->db->query($query);
+		return $result->result_array();
+	}
+	public function movement_bill_details_show($mtoken)
+	{
+		$query = "SELECT mbillid,fplace,ftime,tplace,ttime,purpose,taka,remarks,mode,tmid,transit FROM movement_insert1
 		LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
 		JOIN transitmode ON transitmode.tmid= movement_bill_insert1.mode
 		WHERE movement_insert1.mid='$mtoken'
@@ -420,7 +430,7 @@ class Admin extends CI_Model
 		$sql = "UPDATE movement_bill_insert1 SET fplace='$data[fplace]',ftime='$data[ftime]',tplace='$data[tplace]',ttime='$data[ttime]',purpose='$data[purpose]',mode='$data[billtype]',taka='$data[taka]',remarks='$data[remarks]' WHERE mbillid='$data[mbillid]'";
 		return $query = $this->db->query($sql);
 	}
-	public function movement_bill_check($mtoken,$userid)
+	public function movement_bill_check($mtoken, $userid)
 	{
 		$query = "SELECT * FROM movement_insert1
 		LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
@@ -451,8 +461,8 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	
-	
+
+
 	public function approval_pending_list_linemanager($userid)
 	{
 		$query = "SELECT SUM(taka) AS ctotal,fdate,tdate,
@@ -579,24 +589,24 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	
-	public function movement_bill_approved($mtoken,$userid)
+
+	public function movement_bill_approved($mtoken, $userid)
 	{
 		$sql = "UPDATE movement_insert1 SET mstatus='3' WHERE userid='$userid' AND mid='$mtoken'";
 		return $query = $this->db->query($sql);
 	}
-	public function movement_bill_reject($mtoken,$userid)
+	public function movement_bill_reject($mtoken, $userid)
 	{
 		$sql = "UPDATE movement_insert1 SET mstatus='0' WHERE userid='$userid' AND mid='$mtoken'";
 		return $query = $this->db->query($sql);
 	}
-	public function movement_bill_acc_approved($mtoken,$userid)
+	public function movement_bill_acc_approved($mtoken, $userid)
 	{
 		$accappuser = $this->session->userdata('userid');
 		$sql = "UPDATE movement_insert1 SET mstatus='4',accappdate=CURDATE(),accapptime=CURTIME(),accappuser='$accappuser' WHERE userid='$userid' AND mid='$mtoken'";
 		return $query = $this->db->query($sql);
 	}
-	public function date_wise_approval_list_depthhead($pd,$wd,$userid)
+	public function date_wise_approval_list_depthhead($pd, $wd, $userid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -619,7 +629,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function date_wise_approval_list_linemanager($pd,$wd,$userid)
+	public function date_wise_approval_list_linemanager($pd, $wd, $userid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -641,7 +651,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function date_wise_approval_list_admin($pd,$wd,$userid)
+	public function date_wise_approval_list_admin($pd, $wd, $userid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -664,12 +674,12 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	
-	public function date_wise_approval_list($pd,$wd,$userid)
+
+	public function date_wise_approval_list($pd, $wd, $userid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
-		$query = "SELECT SUM(taka) AS ctotal,fdate,tdate,user.userid,name,user.lmauserid,user.depthheadid,user.accuserid,mid,mstatus,
+		$query = "SELECT SUM(taka) AS ctotal,fdate,tdate,user.userid,name,user.lmauserid,user.depthheadid,user.accuserid,mid,mstatus,accappuser,
 		(SELECT name FROM user WHERE user.userid=movement_insert1.userid) AS username,
 		(SELECT userid FROM user WHERE user.userid=movement_insert1.userid) AS userid,
 		(SELECT name FROM user WHERE user.userid=movement_insert1.lmauserid) AS lname,
@@ -688,7 +698,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function date_wise_approval_list_user($pd,$wd,$userid)
+	public function date_wise_approval_list_user($pd, $wd, $userid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -711,7 +721,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function date_wise_approval_list_accounts($pd,$wd,$userid)
+	public function date_wise_approval_list_accounts($pd, $wd, $userid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -733,11 +743,11 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function date_wise_approval_list_accountshead($pd,$wd,$userid)
+	public function date_wise_approval_list_accountshead($pd, $wd, $userid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
-		$query = "SELECT SUM(taka) AS ctotal,fdate,tdate,mid,mstatus,
+		$query = "SELECT SUM(taka) AS ctotal,fdate,tdate,mid,mstatus,accappuser,
 		(SELECT name FROM user WHERE user.userid=movement_insert1.userid) AS username,
 		(SELECT userid FROM user WHERE user.userid=movement_insert1.userid) AS userid,
 		(SELECT name FROM user WHERE user.userid=movement_insert1.lmauserid) AS lname,
@@ -755,11 +765,11 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function date_wise_approval_list_accountscommon($pd,$wd)
+	public function date_wise_approval_list_accountscommon($pd, $wd)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
-		$query = "SELECT SUM(taka) AS ctotal,fdate,tdate,mid,mstatus,
+		$query = "SELECT SUM(taka) AS ctotal,fdate,tdate,mid,mstatus,accappuser,
 		(SELECT name FROM user WHERE user.userid=movement_insert1.userid) AS username,
 		(SELECT userid FROM user WHERE user.userid=movement_insert1.userid) AS userid,
 		(SELECT name FROM user WHERE user.userid=movement_insert1.lmauserid) AS lname,
@@ -777,7 +787,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function date_wise_approval_details_list($pd,$wd)
+	public function date_wise_approval_details_list($pd, $wd)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -806,7 +816,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function user_wise_approval_list($uid,$pd,$wd,$userid)
+	public function user_wise_approval_list($uid, $pd, $wd, $userid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -818,7 +828,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function bill_type_wise_summary_list($pd,$wd,$factoryid,$ttid)
+	public function bill_type_wise_summary_list($pd, $wd, $factoryid, $ttid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -846,7 +856,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function bill_type_wise_summary_list_ttid($pd,$wd,$ttid)
+	public function bill_type_wise_summary_list_ttid($pd, $wd, $ttid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -874,7 +884,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function bill_type_wise_summary_list_factoryid($pd,$wd,$factoryid)
+	public function bill_type_wise_summary_list_factoryid($pd, $wd, $factoryid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -902,7 +912,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function bill_type_wise_summary_list_all($pd,$wd)
+	public function bill_type_wise_summary_list_all($pd, $wd)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -930,7 +940,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function unit_wise_summary_list($pd,$wd,$factoryid,$tmid)
+	public function unit_wise_summary_list($pd, $wd, $factoryid, $tmid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -957,7 +967,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function unit_wise_summary_list_tmid($pd,$wd,$tmid)
+	public function unit_wise_summary_list_tmid($pd, $wd, $tmid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -984,7 +994,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function unit_wise_summary_list_factoryid($pd,$wd,$factoryid)
+	public function unit_wise_summary_list_factoryid($pd, $wd, $factoryid)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -1011,7 +1021,7 @@ class Admin extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
-	public function unit_wise_summary_list_all($pd,$wd)
+	public function unit_wise_summary_list_all($pd, $wd)
 	{
 		$pd = date("Y-m-d", strtotime($pd));
 		$wd = date("Y-m-d", strtotime($wd));
@@ -1051,12 +1061,12 @@ class Admin extends CI_Model
 		(SELECT userid FROM user WHERE user.userid=movement_insert1.accheadid) AS ahid  
 		FROM movement_insert1
 		LEFT JOIN movement_bill_insert1 ON movement_bill_insert1.mtoken=movement_insert1.mid
-		JOIN transitmode ON transitmode.tmid= movement_bill_insert1.mode
+		LEFT JOIN transitmode ON transitmode.tmid= movement_bill_insert1.mode
 		WHERE movement_insert1.mid='$mid'";
 		$result = $this->db->query($query);
-		
+
 		//$sql1 = "UPDATE movement_insert SET mstatus='4' WHERE mid='$mid'";
-//		$this->db->query($sql1);
+		//		$this->db->query($sql1);
 		return $result->result_array();
 	}
 }
