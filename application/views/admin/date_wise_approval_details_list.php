@@ -95,6 +95,8 @@
           <th>Department Head</th>
           <th>Accounts</th>
           <th>From Date</th>
+          <th>Start Place</th>
+          <th>To Place</th>
           <th>To Date</th>
           <th>Transit</th>
           <th>Transit Type</th>
@@ -108,6 +110,8 @@
       <tfoot>
         <tr>
           <th colspan="11">Totals</th>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
           <th>&nbsp;</th>
           <th data-math="col-sum">col-sum</th>
           <th>&nbsp;</th>
@@ -130,6 +134,8 @@
             <td style="vertical-align:middle;"><?php echo $row['dname']; ?></td>
             <td style="vertical-align:middle;"><?php echo $row['aname']; ?></td>
             <td style="vertical-align:middle;"><?php echo date("d-m-Y", strtotime($row['fdate'])); ?></td>
+            <td style="vertical-align:middle;"><?php echo $row['fplace']; ?></td>
+            <td style="vertical-align:middle;"><?php echo $row['tplace']; ?></td>
             <td style="vertical-align:middle;"><?php echo date("d-m-Y", strtotime($row['tdate'])); ?></td>
             <td style="vertical-align:middle;"><?php echo $row['transit']; ?></td>
             <td style="vertical-align:middle;"><?php echo $row['transittype']; ?></td>
